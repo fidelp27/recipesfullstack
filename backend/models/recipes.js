@@ -19,6 +19,16 @@ const Recipes = sequelize.define('recipes', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    user_id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'users',
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    }
 })
 
 module.exports = Recipes;

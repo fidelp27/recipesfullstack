@@ -21,13 +21,23 @@ const Recipes = sequelize.define('recipes', {
     },
     user_id:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: 'users',
             key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
+    },
+    category_id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'categories',
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     }
 })
 

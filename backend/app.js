@@ -7,10 +7,6 @@ const app = express();
 app.use(express.json());
 
 // routes
-const authRoutes = require('./routes/authRoutes');
-const recipeRoutes = require('./routes/recipesRoutes');
-app.use('/api/auth', authRoutes);
-app.use('/api/recipes', recipeRoutes);
-
-
+const routes = require('./routes');
+app.use('/api', routes);
 module.exports = app;

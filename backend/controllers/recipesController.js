@@ -51,10 +51,19 @@ const deleteRecipe =async(req, res)=>{
     }
 }
 
+const searchRecipes = async(req, res)=>{
+    try{
+        const recipes = await recipeServices.searchRecipes(req.query, req.user.id)
+        res.status(200).json(recipes);
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
+}
 module.exports = {
     getRecipes,
     getRecipeById,
     createRecipe,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe,
+    searchRecipes
 }
